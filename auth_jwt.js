@@ -3,8 +3,8 @@ const passport = require('passport'),
     ExtractJwt = require('passport-jwt').ExtractJwt,
     opts = {};
 
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
-// opts._jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+// opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.SECRET_KEY;
 
     passport.use(new JwtStrategy(opts,
