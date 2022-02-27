@@ -2,7 +2,7 @@ const passport = require('passport'),
     JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt,
     opts = {};
-
+// uncomment fromAuthHeaderWithScheme to use auth header and token. comment out fromAuthHeaderAsBearerToken
 // opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.SECRET_KEY;

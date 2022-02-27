@@ -5,7 +5,6 @@
 */
 
 const cors = require('cors'),
-    http = require('http'),
     express = require('express'),
     jwt = require('jsonwebtoken'),
     passport = require('passport'),
@@ -71,7 +70,9 @@ router.post('/signin', (req, res) => {
         if(req.body.password === user.password){
             let userToken = {id: user.id, username: user.username};
             let token = jwt.sign(userToken, process.env.SECRET_KEY);
-            res.json({success: true, token: token});
+            // res.json({success: true, token: 'JWT ' + token});
+            // uncomment the above res and comment the bottom one to use auth header with JWT a.b.c token in request
+            res.json({success: true, token: token}); // used for bearer token
         }else{
             res.status(401).send({success: false, msg: 'Authentication Failed.'});
         }
