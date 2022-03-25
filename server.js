@@ -70,9 +70,8 @@ router.post('/signin', (req, res) => {
         if(req.body.password === user.password){
             let userToken = {id: user.id, username: user.username};
             let token = jwt.sign(userToken, process.env.SECRET_KEY);
-            // res.json({success: true, token: 'JWT ' + token});
-            // uncomment the above res and comment the bottom one to use auth header with JWT a.b.c token in request
-            res.json({success: true, token: token}); // used for bearer token
+            res.json({success: true, token: 'JWT ' + token}); // use this for JWT a.b.c token
+            // res.json({success: true, token: token}); // use this for Bearer token
         }else{
             res.status(401).send({success: false, msg: 'Authentication Failed.'});
         }

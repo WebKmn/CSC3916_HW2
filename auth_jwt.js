@@ -2,9 +2,9 @@ const passport = require('passport'),
     JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt,
     opts = {};
-// uncomment fromAuthHeaderWithScheme to use auth header and token. comment out fromAuthHeaderAsBearerToken
-// opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt'); // use for JWT a.b.c token
+// opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken(); // use for Bearer token, fails test
 opts.secretOrKey = process.env.SECRET_KEY;
 
     passport.use(new JwtStrategy(opts,
